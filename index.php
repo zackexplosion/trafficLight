@@ -11,49 +11,26 @@
             }
             function CountDown(){
                 var second = $('#canvas_seconds').get(0);
-                var red = document.getElementById('red');
-                var green = document.getElementById('green');
                 var timer = new Array();
                 var flag = 0;
-                /*
-                timer[1] = green.value;
-                timer[0] = red.value;
-                */
                 timer[1] = 26;
                 timer[0] = 74;
                 var today = new Date();
                 var tl_start = Math.round((new Date(today.getFullYear(),today.getMonth(),today.getDate() - 1,7)).getTime()/1000);
-                var ut = Math.round((new Date()).getTime() / 1000 );
                 var period = timer[0] + timer[1];
                 var counter = 0;
-                var phase = 0; 
-                var offset = 0;
-                phase = (ut - tl_start + offset) % period;
-                if(phase > timer[0]){
-                    counter = period - phase;
-                    flag = 1;
-                }
-                else{
-                    flag = 0;
-                    counter = timer[0] - phase;
-                }
+                var phase = 0;
+                var offset = 7;
                 setInterval(function(){
-                    if(counter <= 0){
-                        flag ++;
-                        flag = flag%2;
-                        //counter = timer[flag];
-                        phase = (Math.round((new Date()).getTime() / 1000 ) - tl_start) % period;
-                        if(phase > timer[0]){
-                            counter = period - phase;
-                            flag = 1;
-                        }
-                        else{
-                            flag = 0;
-                            counter = timer[0] - phase;
-                        }
+                    phase = (Math.round((new Date()).getTime() / 1000 ) - tl_start + offset) % period;
+                    if(phase > timer[0]){
+                        counter = period - phase;
+                        flag = 1;
                     }
-                    else
-                        counter -= 0.1;
+                    else{
+                        flag = 0;
+                        counter = timer[0] - phase;
+                    }
                     $(".clock_seconds .val").text(Math.floor(counter));
                     var ctx = second.getContext('2d');
                     ctx.clearRect(0, 0, second.width, second.height);
@@ -70,13 +47,13 @@
                     ctx.arc(94,94,85, deg(0), deg(Math.floor(360 - counter * 360 / timer[flag])));
                     ctx.lineWidth = 17;
                     ctx.stroke();
-                },100);
+                },1000);
             }
         $(document).ready(function(){CountDown();});
         </script>
     </head>
     <body>
-        
+
         <div class="wrapper">
         <div class="clock">
             <div class="clock_seconds">
