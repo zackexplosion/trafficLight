@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="add-form">
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">路口</label>
                         <div class="col-sm-4">
@@ -32,24 +32,24 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">第一時相</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="24">
+                            <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="28">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2" for="timer2">第二時相</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間" value="76">
+                            <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間" value="92">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2" for="delay">延遲</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="0">
+                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="4">
                         </div>
                       </div>
                       <div class="btn-group">
-                          <a class="btn btn-primary" id="start1">開始倒數</a>
-                          <a class="btn btn-warning" id="stop1">停止倒數</a>
+                          <a class="btn btn-primary" id="start1">測試</a>
+                          <a class="btn btn-success" id="confirm">送出資料</a>
                       </div>
                     </form>
                 </div>
