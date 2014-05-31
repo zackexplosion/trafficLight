@@ -9,14 +9,30 @@
         <link rel="stylesheet" href="assets/css/bootstrap.css.map" type="text/css"/>
         <script type="text/javascript" src="assets/js/jquery-1.8.0.min.js"></script>
         <script type="text/javascript" src="assets/js/trafficlight.js?v=<?= time()?>"></script>
+        <script type="text/javascript" src="assets/js/geolocation.js?v=<?= time()?>"></script>
         <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
     <body>
         <div class="container">
             <div class="row">
+            <div id="step0">
+                <h3 class="text-muted" id="search">來尋找威利</h3>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="latitude" placeholder="緯度">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="longitude" placeholder="經度">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="accuracy" placeholder="誤差">
+                    </div>
+                </form>
+            </div>
             <div id="step1" class="col-md-5">
-                <h3 id="red-info" class="text-muted">紅燈時間：<span id="red-measure-second">0</span></h3>
-                <h3 id="green-info" class="text-muted">綠燈時間：<span id="green-measure-second">0</span></h3>
+                <h3 class="text-muted"><label>紅燈時間<label>：<span id="red-measure-second">0</span></h3>
+                <h3 class="text-muted"><label>綠燈時間<label>：<span id="green-measure-second">0</span></h3>
                 <button id="red-measure-start" class="btn btn-primary btn-block">紅燈計時開始</button>
                 <button id="green-measure-start" class="btn btn-primary btn-block" style="display:none">綠燈計時開始</button>
                 <button id="measure-stop" class="btn btn-primary btn-block" style="display:none">計時結束</button>
@@ -130,6 +146,21 @@
                 $('#step2').fadeOut(200);
                 $('#step1').fadeIn(200);
             });
+            if (navigator.geolocation) {
+                var welly = setInterval(function(){
+                    var text = $('#search').text();
+                    $('#search').text(text + '.');
+                }, 1000);
+                navigator.geolocation.getCurrentPosition(function(position){
+                    clearInterval(welly);
+                    $('#latitude').val(position.coords.latitude);
+                    $('#longitude').val(position.coords.longitude);
+                    $('#accuracy').val(position.coords.accuracy);
+                    success(position);
+                }, error);
+            } else {
+                error('not supported');
+            }
         </script>
     </body>
 </html>
