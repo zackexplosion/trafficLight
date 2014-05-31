@@ -5,8 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>黃金綠燈評估系統</title>
         <link rel="stylesheet" href="assets/css/jbclock.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css"/>
+        <link rel="stylesheet" href="assets/css/bootstrap.css.map" type="text/css"/>
         <script type="text/javascript" src="assets/js/jquery-1.8.0.min.js"></script>
-        <script type="text/javascript" src="assets/js/trafficlight.js"></script>
+        <script type="text/javascript" src="assets/js/trafficlight.js?v=<?= time()?>"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 var today = new Date();
