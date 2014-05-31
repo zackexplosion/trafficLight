@@ -16,13 +16,18 @@
             <div class="row">
                 <div class="col-xs-3">
                     <div class="clock" id="light1">
-                        <p class="text-primary">興仁路二段與榮民路路口</p>
                         <canvas id="canvas_seconds" width="188" height="188"></canvas>
                         <div class="text">
                             <p class="val" id="light1val">0</p>
                             <p class="type_seconds">Seconds</p>
                         </div>
                     </div>
+                </div>
+                <div class="col-xs-3">
+                      <div class="form-group">
+                        <label for="timer1">路口</label>
+                        <input type="number" class="form-control" name="location" id="location" placeholder="交叉路口" value="興仁路二段與榮民路路口">
+                      </div>
                       <div class="form-group">
                         <label for="timer1">第一時相</label>
                         <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="24">
