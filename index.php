@@ -107,6 +107,7 @@
             $('#test').click(function(){
                 if (null !== lightInterval) {
                     clearInterval(lightInterval);
+                    lightInterval = null;
                 }
                 var red_phase = parseInt($('#red_phase').val());
                 var green_phase = parseInt($('#green_phase').val());
@@ -123,6 +124,7 @@
             });
             $('#stop1').click(function(){
                 clearInterval(lightInterval);
+                lightInterval = null;
             });
             $('#red-measure-start').click(function(){
                 $('#red-measure-start').hide();
@@ -134,6 +136,7 @@
             });
             $('#green-measure-start').click(function(){
                 clearInterval(redMeasure);
+                redMeasure = null;
                 $('#green-measure-start').hide();
                 $('#measure-stop').show();
                 var now = new Date();
@@ -142,6 +145,7 @@
             });
             $('#measure-stop').click(function(){
                 clearInterval(greenMeasure);
+                greenMeasure = null;
                 var red_time = parseInt($('#red-measure-second').text());
                 var green_time = parseInt($('#green-measure-second').text());
                 today = new Date();
@@ -159,6 +163,10 @@
                 $('#step2').fadeIn(200);
             });
             $('#back').click(function(){
+                if (null !== lightInterval) {
+                    clearInterval(lightInterval);
+                    lightInterval = null;
+                }
                 $('#step2').fadeOut(200);
                 $('#step1').fadeIn(200);
             });
@@ -169,6 +177,7 @@
                 }, 1000);
                 navigator.geolocation.getCurrentPosition(function(position){
                     clearInterval(welly);
+                    welly = null;
                     $('#latitude').val(position.coords.latitude);
                     $('#longitude').val(position.coords.longitude);
                     $('#accuracy').val(position.coords.accuracy);
@@ -176,6 +185,7 @@
                 }, error);
             } else {
                 clearInterval(welly);
+                welly = null;
                 $('#latitude').val(0);
                 $('#longitude').val(0);
                 $('#accuracy').val(0);
