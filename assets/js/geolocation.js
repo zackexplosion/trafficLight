@@ -11,9 +11,9 @@ function success(position) {
 
   var mapcanvas = document.createElement('div');
   mapcanvas.id = 'mapcanvas';
-  mapcanvas.class = 'img-rounded';
+  mapcanvas.class = 'col-md-6';
   mapcanvas.style.height = '400px';
-  mapcanvas.style.width = '560px';
+  //mapcanvas.style.width = '560px';
 
   document.querySelector('#step0').appendChild(mapcanvas);
 

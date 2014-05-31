@@ -16,19 +16,23 @@
     <body>
         <div class="container">
             <div class="row">
-            <div id="step0">
+            <div id="step0" class="col-md-6">
                 <h3 class="text-muted" id="search">來尋找威利</h3>
-                <form class="form-inline" role="form">
-                    <div class="form-group">
+                <form role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">緯度</span>
                         <input type="number" class="form-control" id="latitude" placeholder="緯度">
                     </div>
-                    <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">經度</span>
                         <input type="number" class="form-control" id="longitude" placeholder="經度">
                     </div>
-                    <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">準確度(m)</span>
                         <input type="number" class="form-control" id="accuracy" placeholder="誤差">
                     </div>
                 </form>
+                <hr>
                 <div class="btn-group">
                     <a class="btn btn-danger" id="no-position">我不知道這是在哪裡</a>
                     <a class="btn btn-success" id="yes-position">這是我的當前位置</a>
@@ -69,6 +73,12 @@
                         <label class="col-sm-2" for="timer1">緯度</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" id="location-latitude" placeholder="沒有資料">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-2" for="timer1">準確度</label>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" id="location-accuracy" placeholder="沒有資料">
                         </div>
                       </div>
                       <div class="form-group">
@@ -194,6 +204,7 @@
             $('#yes-position').click(function(){
                 $('#location-latitude').val($('#latitude').val());
                 $('#location-longitude').val($('#longitude').val());
+                $('#location-accuracy').val($('#accuracy').val());
                 $('#step0').fadeOut(200);
                 $('#step1').fadeIn(200);
             });
