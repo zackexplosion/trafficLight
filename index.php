@@ -4,9 +4,9 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>黃金綠燈評估系統</title>
-        <link rel="stylesheet" href="jbclock.css" type="text/css" media="all" />
-        <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
-        <script type="text/javascript" src="trafficlight.js"></script>
+        <link rel="stylesheet" href="assets/css/jbclock.css" type="text/css" media="all" />
+        <script type="text/javascript" src="assets/js/jquery-1.8.0.min.js"></script>
+        <script type="text/javascript" src="assets/js/trafficlight.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 var today = new Date();
