@@ -14,32 +14,38 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="clock" id="light1">
-                        <canvas id="canvas_seconds" width="188" height="188"></canvas>
-                        <div class="text">
-                            <p class="val" id="light1val">0</p>
-                            <p class="type_seconds">Seconds</p>
-                        </div>
+                <div class="clock col-sm-3" id="light1">
+                    <canvas id="canvas_seconds" width="188" height="188"></canvas>
+                    <div class="text">
+                        <p class="val" id="light1val">0</p>
+                        <p class="type_seconds">Seconds</p>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <form>
+                <div class="col-sm-6">
+                    <form class="form-horizontal">
                       <div class="form-group">
-                        <label for="timer1">路口</label>
+                        <label class="col-sm-2" for="timer1">路口</label>
+                        <div class="col-sm-4">
                         <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口" value="興仁路二段與榮民路路口">
+                        </div>
                       </div>
                       <div class="form-group">
-                        <label for="timer1">第一時相</label>
-                        <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="24">
+                        <label class="col-sm-2" for="timer1">第一時相</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="24">
+                        </div>
                       </div>
                       <div class="form-group">
-                        <label for="timer2">第二時相</label>
-                        <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間" value="76">
+                        <label class="col-sm-2" for="timer2">第二時相</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間" value="76">
+                        </div>
                       </div>
                       <div class="form-group">
-                        <label for="delay">延遲</label>
-                        <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="0">
+                        <label class="col-sm-2" for="delay">延遲</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="0">
+                        </div>
                       </div>
                       <div class="btn-group">
                           <a class="btn btn-primary" id="start1">開始倒數</a>
