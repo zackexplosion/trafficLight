@@ -29,8 +29,12 @@
                         <input type="number" class="form-control" id="accuracy" placeholder="誤差">
                     </div>
                 </form>
+                <div class="btn-group">
+                    <a class="btn btn-danger" id="no-position">我不知道這是在哪裡</a>
+                    <a class="btn btn-success" id="yes-position">這是我的當前位置</a>
+                </div>
             </div>
-            <div id="step1" class="col-md-5">
+            <div id="step1" style='display:none;' class="col-md-5">
                 <h3 class="text-muted"><label>紅燈時間<label>：<span id="red-measure-second">0</span></h3>
                 <h3 class="text-muted"><label>綠燈時間<label>：<span id="green-measure-second">0</span></h3>
                 <button id="red-measure-start" class="btn btn-primary btn-block">紅燈計時開始</button>
@@ -53,6 +57,18 @@
                         <label class="col-sm-2" for="timer1">路口</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口" value="興仁路二段與榮民路路口">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-2" for="timer1">經度</label>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" id="location-longitude" placeholder="沒有資料">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-2" for="timer1">緯度</label>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" id="location-latitude" placeholder="沒有資料">
                         </div>
                       </div>
                       <div class="form-group">
@@ -159,8 +175,22 @@
                     success(position);
                 }, error);
             } else {
+                clearInterval(welly);
+                $('#latitude').val(0);
+                $('#longitude').val(0);
+                $('#accuracy').val(0);
                 error('not supported');
             }
+            $('#yes-position').click(function(){
+                $('#location-latitude').val($('#latitude').val());
+                $('#location-longitude').val($('#longitude').val());
+                $('#step0').fadeOut(200);
+                $('#step1').fadeIn(200);
+            });
+            $('#no-position').click(function(){
+                $('#step0').fadeOut(200);
+                $('#step1').fadeIn(200);
+            });
         </script>
     </body>
 </html>
