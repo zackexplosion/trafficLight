@@ -14,7 +14,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-sm-3">
                     <div class="clock" id="light1">
                         <canvas id="canvas_seconds" width="188" height="188"></canvas>
                         <div class="text">
@@ -23,10 +23,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-sm-3">
+                    <form>
                       <div class="form-group">
                         <label for="timer1">路口</label>
-                        <input type="number" class="form-control" name="location" id="location" placeholder="交叉路口" value="興仁路二段與榮民路路口">
+                        <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口" value="興仁路二段與榮民路路口">
                       </div>
                       <div class="form-group">
                         <label for="timer1">第一時相</label>
@@ -44,6 +45,7 @@
                           <a class="btn btn-primary" id="start1">開始倒數</a>
                           <a class="btn btn-warning" id="stop1">停止倒數</a>
                       </div>
+                    </form>
                 </div>
             </div>
         </div>
