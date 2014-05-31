@@ -14,14 +14,24 @@
     <body>
         <div class="container">
             <div class="row">
+            <div id="step1" class="col-md-5">
+                <h3 id="red-info" class="text-muted">紅燈時間：<span id="red-measure-second">0</span></h3>
+                <h3 id="green-info" class="text-muted">綠燈時間：<span id="green-measure-second">0</span></h3>
+                <button id="red-measure-start" class="btn btn-primary btn-block">紅燈計時開始</button>
+                <button id="green-measure-start" class="btn btn-primary btn-block" style="display:none">綠燈計時開始</button>
+                <button id="measure-stop" class="btn btn-primary btn-block" style="display:none">計時結束</button>
+                <button id="skip" class="btn btn-warning btn-block">跳過此步驟直接看 Demo</button>
+            </div>
+            <div id="step2" style="display:none;">
                 <div class="clock col-sm-3" id="light1">
                     <canvas id="canvas_seconds" width="188" height="188"></canvas>
                     <div class="text">
                         <p class="val" id="light1val">0</p>
-                        <p class="type_seconds">Seconds</p>
+                        <p class="type_seconds">剩餘秒數</p>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <h3 class="text-muted">實地測試</h3>
                     <form class="form-horizontal" id="add-form">
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">路口</label>
@@ -30,13 +40,13 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2" for="timer1">第一時相</label>
+                        <label class="col-sm-2" for="timer1">綠燈加黃燈長度</label>
                         <div class="col-sm-4">
                             <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="28">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2" for="timer2">第二時相</label>
+                        <label class="col-sm-2" for="timer2">紅燈長度</label>
                         <div class="col-sm-4">
                             <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間" value="92">
                         </div>
@@ -47,19 +57,24 @@
                             <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="4">
                         </div>
                       </div>
-                      <div class="btn-group">
-                          <a class="btn btn-primary" id="start1">測試</a>
-                          <a class="btn btn-success" id="confirm">送出資料</a>
+                      <a class="btn btn-primary" id="test">測試</a>
+                      <div class="btn-group col-md-offset-1">
+                          <a class="btn btn-danger" id="back">回計時頁面</a>
+                          <a class="btn btn-success disabled" id="confirm">送出資料</a>
                       </div>
                     </form>
                 </div>
             </div>
+            </div>
         </div>
         <script type="text/javascript">
-            var light = null;
-            $('#start1').click(function(){
-                if (null !== light) {
-                    clearInterval(light);
+            var lightInterval = null;
+            var redMeasure = null;
+            var greenMeasure = null;
+            var period_start = null;
+            $('#test').click(function(){
+                if (null !== lightInterval) {
+                    clearInterval(lightInterval);
                 }
                 var red_phase = parseInt($('#red_phase').val());
                 var green_phase = parseInt($('#green_phase').val());
@@ -72,10 +87,48 @@
                 trafficLight.tl_start = Math.round((new Date(today.getFullYear(),today.getMonth(),today.getDate() - 1,7)).getTime()/1000);
                 console.log(trafficLight);
                 var display = $('#canvas_seconds').get(0);
-                light = setInterval(function(){countDown(trafficLight, display)}, 1000);
+                lightInterval = setInterval(function(){countDown(trafficLight, display)}, 1000);
             });
             $('#stop1').click(function(){
-                clearInterval(light);
+                clearInterval(lightInterval);
+            });
+            $('#red-measure-start').click(function(){
+                $('#red-measure-start').hide();
+                $('#green-measure-start').show();
+                var now = new Date();
+                period_start = Math.round(now.getTime() / 1000);
+                var begin = now.getTime()/1000;
+                redMeasure = setInterval(function(){$('#red-measure-second').text(Math.round((new Date()).getTime()/1000 - begin))},1000);
+            });
+            $('#green-measure-start').click(function(){
+                clearInterval(redMeasure);
+                $('#green-measure-start').hide();
+                $('#measure-stop').show();
+                var now = new Date();
+                var begin = now.getTime()/1000;
+                greenMeasure = setInterval(function(){$('#green-measure-second').text(Math.round((new Date()).getTime()/1000 - begin))},1000);
+            });
+            $('#measure-stop').click(function(){
+                clearInterval(greenMeasure);
+                var red_time = parseInt($('#red-measure-second').text());
+                var green_time = parseInt($('#green-measure-second').text());
+                today = new Date();
+                var tl_start = Math.round((new Date(today.getFullYear(),today.getMonth(),today.getDate() - 1,0)).getTime()/1000);
+                var period = red_time + green_time;
+                var offset = (period_start - tl_start) % period;
+                $('#red_phase').val(red_time);
+                $('#green_phase').val(green_time);
+                $('#offset').val(offset);
+                $('#step1').fadeOut(200);
+                $('#step2').fadeIn(200);
+            });
+            $('#skip').click(function(){
+                $('#step1').fadeOut(200);
+                $('#step2').fadeIn(200);
+            });
+            $('#back').click(function(){
+                $('#step2').fadeOut(200);
+                $('#step1').fadeIn(200);
             });
         </script>
     </body>
