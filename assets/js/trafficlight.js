@@ -21,7 +21,7 @@ var countDown = function (trafficLight, display) {
     flag = 0;
     counter = trafficLight.timer[0] - phase;
   }
-  $(".clock_seconds .val").text(Math.floor(counter));
+  $("#light1val").text(Math.floor(counter));
   var ctx = display.getContext('2d');
   ctx.clearRect(0, 0, display.width, display.height);
   ctx.beginPath();

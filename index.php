@@ -26,21 +26,15 @@
         </script>
     </head>
     <body>
-        <div class="wrapper">
-        <div class="clock">
-            <div class="clock_seconds">
-                <div class="bgLayer">
-                    <div class="topLayer"></div>
-                    <canvas id="canvas_seconds" width="188" height="188">
-                    </canvas>
-                    <div class="text">
-                        <p class="val">0</p>
-                        <p class="type_seconds">Seconds</p>
-                    </div>
+        <div class="container">
+            <div class="clock" id="light1">
+                <canvas id="canvas_seconds" width="188" height="188">
+                </canvas>
+                <div class="text">
+                    <p class="val" id="light1val">0</p>
+                    <p class="type_seconds">Seconds</p>
                 </div>
             </div>
-            <!-- Seconds -->
-        </div>
         </div><!--/wrapper-->
     </body>
 </html>
