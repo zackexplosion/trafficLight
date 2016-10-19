@@ -62,7 +62,7 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">路口</label>
                         <div class="col-sm-4">
-                        <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口" value="興仁路二段與榮民路路口">
+                        <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口">
                         </div>
                       </div>
                       <div class="form-group">
@@ -86,19 +86,19 @@
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">綠燈加黃燈長度</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間" value="28">
+                            <input type="number" class="form-control" name="green_phase" id="green_phase" placeholder="綠燈時間">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2" for="timer2">紅燈長度</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間" value="92">
+                            <input type="number" class="form-control" name="red_phase" id="red_phase" placeholder="紅燈時間">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-sm-2" for="delay">延遲</label>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="4">
+                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間">
                         </div>
                       </div>
                       <div class="btn-group col-md-offset-1">
