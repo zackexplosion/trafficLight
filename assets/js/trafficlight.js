@@ -7,28 +7,31 @@ function deg(deg){
  *                   timer: [24, 76],
  *                   period: int,
  *                   offset: int,
- *                   tl_start: int}
+ *                   tl_start: int
+ *                }
  */
 var countDown = function (trafficLight, display) {
   var phase = (Math.round((new Date()).getTime() / 1000 ) - trafficLight.tl_start + trafficLight.offset) % trafficLight.period;
   var flag = null;
   var counter = null;
   if(phase > trafficLight.timer[0]){
-    counter = trafficLight.period - phase;
     flag = 1;
-  }
-  else{
+    counter = trafficLight.period - phase;
+  } else{
     flag = 0;
     counter = trafficLight.timer[0] - phase;
   }
   $("#light1val").text(Math.floor(counter));
   var ctx = display.getContext('2d');
+
   ctx.clearRect(0, 0, display.width, display.height);
   ctx.beginPath();
-  if(flag == 0)
+
+  if (flag == 0) {
     ctx.strokeStyle = "#ff6565";
-  else if(flag == 1)
+  } else {
     ctx.strokeStyle = "#9cdb7d";
+  }
   ctx.shadowBlur = 10;
   ctx.shadowOffsetX = 0;
   ctx.shadowOffsetY = 0;
