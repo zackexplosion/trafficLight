@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <h3 class="text-muted">實地測試</h3>
+                    <h3 class="text-muted">實地測試<a class="btn btn-primary" id="test">執行</a></h3>
                     <form class="form-horizontal" id="add-form">
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">路口</label>
@@ -101,7 +101,6 @@
                             <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間" value="4">
                         </div>
                       </div>
-                      <a class="btn btn-primary" id="test">測試</a>
                       <div class="btn-group col-md-offset-1">
                           <a class="btn btn-danger" id="back">回計時頁面</a>
                           <a class="btn btn-success disabled" id="confirm">送出資料</a>
