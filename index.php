@@ -123,24 +123,34 @@
             var redMeasure = null;
             var greenMeasure = null;
             var period_start = null;
-            $('#test').click(function(){
-                if (null !== lightInterval) {
-                    clearInterval(lightInterval);
-                    lightInterval = null;
-                }
-                var red_phase = parseInt($('#red_phase').val());
-                var green_phase = parseInt($('#green_phase').val());
-                var offset = parseInt($('#offset').val());
+            var setTrafficLight = function () {
+                var red_phase = parseInt($('#red_phase').val()) || parseInt(getParameterByName('red'));
+                var green_phase = parseInt($('#green_phase').val()) || parseInt(getParameterByName('green'));
+                var offset = parseInt($('#offset').val()) || parseInt(getParameterByName('offset'));
+                var _location = $('#location').val() || getParameterByName('location');
                 var trafficLight = new Object();
+                $('#red_phase').val(red_phase);
+                $('#green_phase').val(green_phase);
+                $('#offset').val(offset);
+                $('#location').val(_location);
                 trafficLight.timer = [red_phase, green_phase];
                 trafficLight.offset = offset;
                 trafficLight.period = red_phase + green_phase;
                 today = new Date();
                 trafficLight.tl_start = Math.round((new Date(today.getFullYear(),today.getMonth(),today.getDate() - 1,7)).getTime()/1000);
-                console.log(trafficLight);
+                return trafficLight;
+            }
+            var fire = function () {
+                if (null !== lightInterval) {
+                    clearInterval(lightInterval);
+                    lightInterval = null;
+                }
+                var trafficLight = setTrafficLight();
+                today = new Date();
                 var display = $('#canvas_seconds').get(0);
                 lightInterval = setInterval(function(){countDown(trafficLight, display)}, 1000);
-            });
+            }
+            $('#test').click(fire);
             $('#stop1').click(function(){
                 clearInterval(lightInterval);
                 lightInterval = null;
