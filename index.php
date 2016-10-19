@@ -16,6 +16,7 @@
     <body>
         <div class="container">
             <div class="row">
+<!--
             <div id="step0" class="col-md-6">
                 <h3 class="text-muted" id="search">來尋找威利</h3>
                 <form role="form">
@@ -46,7 +47,8 @@
                 <button id="measure-stop" class="btn btn-primary btn-block" style="display:none">計時結束</button>
                 <button id="skip" class="btn btn-warning btn-block">跳過此步驟直接看 Demo</button>
             </div>
-            <div id="step2" style="display:none;">
+-->
+            <div id="step2" style="">
                 <div class="clock col-sm-3" id="light1">
                     <canvas id="canvas_seconds" width="188" height="188"></canvas>
                     <div class="text">
