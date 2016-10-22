@@ -14,15 +14,6 @@
     <body>
         <div class="container">
             <div class="row">
-            <div id="step1" style='display:none;' class="col-md-5">
-                <h3 class="text-muted"><label>紅燈時間</label>：<span id="red-measure-second">0</span></h3>
-                <h3 class="text-muted"><label>綠燈時間</label>：<span id="green-measure-second">0</span></h3>
-                <button id="red-measure-start" class="btn btn-primary btn-block">紅燈計時開始</button>
-                <button id="green-measure-start" class="btn btn-primary btn-block" style="display:none">綠燈計時開始</button>
-                <button id="measure-stop" class="btn btn-primary btn-block" style="display:none">計時結束</button>
-                <button id="skip" class="btn btn-warning btn-block">跳過此步驟直接看 Demo</button>
-            </div>
-            <div id="step2" style="">
                 <div class="clock col-sm-3" id="light1">
                     <canvas id="canvas_seconds" width="188" height="188"></canvas>
                     <div class="text">
@@ -37,24 +28,6 @@
                         <label class="col-sm-2" for="timer1">路口</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2" for="timer1">經度</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" id="location-longitude" placeholder="沒有資料">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2" for="timer1">緯度</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" id="location-latitude" placeholder="沒有資料">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2" for="timer1">準確度</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" id="location-accuracy" placeholder="沒有資料">
                         </div>
                       </div>
                       <div class="form-group">
@@ -76,12 +49,10 @@
                         </div>
                       </div>
                       <div class="btn-group col-md-offset-1">
-                          <a class="btn btn-danger" id="back">回計時頁面</a>
                           <a class="btn btn-success disabled" id="confirm">送出資料</a>
                       </div>
                     </form>
                 </div>
-            </div>
             </div>
         </div>
     </body>
