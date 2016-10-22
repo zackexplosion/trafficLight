@@ -52,10 +52,11 @@ var getParameterByName = function (name) {
 var lightInterval = null;
 var period_start = null;
 var setTrafficLight = function () {
-    var red_phase = parseInt($('#red_phase').val()) || parseInt(getParameterByName('red'));
-    var green_phase = parseInt($('#green_phase').val()) || parseInt(getParameterByName('green'));
-    var offset = parseInt($('#offset').val()) || parseInt(getParameterByName('offset'));
+    var red_phase = parseInt($('#red_phase').val()) || parseInt(getParameterByName('red')) || null;
+    var green_phase = parseInt($('#green_phase').val()) || parseInt(getParameterByName('green')) || null;
+    var offset = parseInt($('#offset').val()) || parseInt(getParameterByName('offset')) || null;
     var trafficLight = new Object();
+    trafficLight.ready = false;
     $('#red_phase').val(red_phase);
     $('#green_phase').val(green_phase);
     $('#offset').val(offset);
@@ -64,6 +65,9 @@ var setTrafficLight = function () {
     trafficLight.offset = offset;
     trafficLight.period = red_phase + green_phase;
     today = new Date();
+    if (red_phase && green_phase && offset) {
+        trafficLight.ready = true;
+    }
     trafficLight.tl_start = Math.round((new Date(today.getFullYear(),today.getMonth(),today.getDate() - 1,7)).getTime()/1000);
     return trafficLight;
 }
