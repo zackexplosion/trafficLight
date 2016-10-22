@@ -81,5 +81,9 @@ var fire = function () {
     lightInterval = setInterval(function(){countDown(trafficLight, display)}, 1000);
 }
 $(document).on("ready", function () {
+    var trafficLight = setTrafficLight();
+    if (trafficLight.ready) {
+        fire();
+    }
     $('#test').click(fire);
 });
