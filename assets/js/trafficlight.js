@@ -55,11 +55,13 @@ var setTrafficLight = function () {
     var red_phase = parseInt($('#red_phase').val()) || parseInt(getParameterByName('red')) || null;
     var green_phase = parseInt($('#green_phase').val()) || parseInt(getParameterByName('green')) || null;
     var offset = parseInt($('#offset').val()) || parseInt(getParameterByName('offset')) || null;
+    var _location = $('#location').val() || getParameterByName('location');
     var trafficLight = new Object();
     trafficLight.ready = false;
     $('#red_phase').val(red_phase);
     $('#green_phase').val(green_phase);
     $('#offset').val(offset);
+    $('#location').val(_location);
     trafficLight.timer = [red_phase, green_phase];
     trafficLight.offset = offset;
     trafficLight.period = red_phase + green_phase;
