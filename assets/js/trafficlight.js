@@ -81,4 +81,6 @@ var fire = function () {
     var display = $('#canvas_seconds').get(0);
     lightInterval = setInterval(function(){countDown(trafficLight, display)}, 1000);
 }
+$(document).on("ready", function () {
 $('#test').click(fire);
+});
