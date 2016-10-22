@@ -60,7 +60,6 @@ var setTrafficLight = function () {
     $('#red_phase').val(red_phase);
     $('#green_phase').val(green_phase);
     $('#offset').val(offset);
-    $('#location').val(_location);
     trafficLight.timer = [red_phase, green_phase];
     trafficLight.offset = offset;
     trafficLight.period = red_phase + green_phase;
