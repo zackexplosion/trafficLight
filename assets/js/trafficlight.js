@@ -78,7 +78,6 @@ var fire = function () {
         lightInterval = null;
     }
     var trafficLight = setTrafficLight();
-    today = new Date();
     var display = $('#canvas_seconds').get(0);
     lightInterval = setInterval(function(){countDown(trafficLight, display)}, 1000);
 }
