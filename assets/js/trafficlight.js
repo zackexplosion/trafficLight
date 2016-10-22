@@ -87,16 +87,18 @@ $(document).on("ready", function () {
         fire();
     }
     $('#test').click(fire);
-    $('a[data-type="plus"]').on("click", function () {
+    $('button[data-type="plus"]').on("click", function () {
         var target = $(this).data('target');
         var originValue = parseInt($('#' + target).val());
         $('#' + target).val(originValue + 1);
         fire();
+        return false;
     });
-    $('a[data-type="minus"]').on("click", function () {
+    $('button[data-type="minus"]').on("click", function () {
         var target = $(this).data('target');
         var originValue = parseInt($('#' + target).val());
         $('#' + target).val(originValue - 1);
         fire();
+        return false;
     });
 });
