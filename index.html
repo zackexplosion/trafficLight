@@ -14,6 +14,7 @@
     <body>
         <div class="container">
             <div class="row">
+                <a class="btn btn-primary" id="setting-menu" data-toggle="collapse" href="#add-form">設定</a>
                 <div class="clock col-sm-3" id="light1">
                     <canvas id="canvas_seconds" width="188" height="188"></canvas>
                     <div class="text">
@@ -24,8 +25,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="text-muted">實地測試<a class="btn btn-primary" id="test">執行</a></h3>
-                    <form class="form-horizontal" id="add-form">
+                    <form class="form-horizontal collapse" id="add-form">
                       <div class="form-group">
                         <label class="col-sm-2" for="timer1">路口</label>
                         <div class="col-sm-4">
