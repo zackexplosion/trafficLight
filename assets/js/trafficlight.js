@@ -1,5 +1,5 @@
 function deg(deg){
-  return (Math.PI/180)*deg - (Math.PI/180)*90;
+    return (Math.PI/180)*deg - (Math.PI/180)*90;
 }
 
 /*
@@ -11,35 +11,35 @@ function deg(deg){
  *                }
  */
 var countDown = function (trafficLight, display) {
-  var phase = (Math.round((new Date()).getTime() / 1000 ) - trafficLight.tl_start + trafficLight.offset) % trafficLight.period;
-  var flag = null;
-  var counter = null;
-  if(phase > trafficLight.timer[0]){
-    flag = 1;
-    counter = trafficLight.period - phase;
-  } else{
-    flag = 0;
-    counter = trafficLight.timer[0] - phase;
-  }
-  $("#light1val").text(Math.floor(counter));
-  var ctx = display.getContext('2d');
+    var phase = (Math.round((new Date()).getTime() / 1000 ) - trafficLight.tl_start + trafficLight.offset) % trafficLight.period;
+    var flag = null;
+    var counter = null;
+    if(phase > trafficLight.timer[0]){
+        flag = 1;
+        counter = trafficLight.period - phase;
+    } else{
+        flag = 0;
+        counter = trafficLight.timer[0] - phase;
+    }
+    $("#light1val").text(Math.floor(counter));
+    var ctx = display.getContext('2d');
 
-  ctx.clearRect(0, 0, display.width, display.height);
-  ctx.beginPath();
+    ctx.clearRect(0, 0, display.width, display.height);
+    ctx.beginPath();
 
-  if (flag == 0) {
-    ctx.strokeStyle = "#ff6565";
-  } else {
-    ctx.strokeStyle = "#9cdb7d";
-  }
-  ctx.shadowBlur = 10;
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-  ctx.shadowColor = "none";
+    if (flag == 0) {
+        ctx.strokeStyle = "#ff6565";
+    } else {
+        ctx.strokeStyle = "#9cdb7d";
+    }
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.shadowColor = "none";
 
-  ctx.arc(94,94,85, deg(0), deg(Math.floor(360 - counter * 360 / trafficLight.timer[flag])));
-  ctx.lineWidth = 17;
-  ctx.stroke();
+    ctx.arc(94,94,85, deg(0), deg(Math.floor(360 - counter * 360 / trafficLight.timer[flag])));
+    ctx.lineWidth = 17;
+    ctx.stroke();
 }
 var getParameterByName = function (name) {
     var url = window.location.href;
