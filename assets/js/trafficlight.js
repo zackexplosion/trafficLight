@@ -49,6 +49,20 @@ var getParameterByName = function (name) {
     if (!results[2]) return '';
     return (decodeURIComponent(results[2].replace(/\+/g, " ")));
 }
+var replaceUrlParam = function (paramName, paramValue) {
+    var url = window.location.href;
+    var newUrl = null;
+    if(paramValue == null)
+        paramValue = '';
+    var pattern = new RegExp('\\b('+paramName+'=).*?(&|$)')
+    if(url.search(pattern)>=0){
+        newUrl = '?' + url.replace(pattern,'$1' + paramValue + '$2').split('?')[1];
+    } else {
+        newUrl = url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue 
+    }
+    window.history.pushState({}, '', newUrl);
+}
+
 var lightInterval = null;
 var period_start = null;
 var setTrafficLight = function () {
