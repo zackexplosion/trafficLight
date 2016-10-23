@@ -86,6 +86,7 @@ var setTrafficLight = function () {
     today = new Date();
     if (red_phase && green_phase && offset) {
         trafficLight.ready = true;
+        $('#period').val(red_phase + green_phase);
     }
     trafficLight.tl_start = Math.round((new Date(today.getFullYear(),today.getMonth(),today.getDate() - 1,7)).getTime()/1000);
     return trafficLight;
