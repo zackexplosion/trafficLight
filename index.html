@@ -14,6 +14,12 @@
     <body>
         <div class="container">
             <div class="row">
+                      <div class="form-group">
+                        <label class="col-sm-2" for="timer1">路口</label>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口">
+                        </div>
+                      </div>
                 <a class="btn btn-primary" id="setting-menu" data-toggle="collapse" href="#add-form">設定</a>
                 <div class="clock col-sm-3" id="light1">
                     <canvas id="canvas_seconds" width="188" height="188"></canvas>
@@ -27,9 +33,13 @@
                 <div class="col-sm-6">
                     <form class="form-horizontal collapse" id="add-form">
                       <div class="form-group">
-                        <label class="col-sm-2" for="timer1">路口</label>
+                        <label class="col-sm-2" for="delay">延遲</label>
                         <div class="col-sm-4">
-                        <input type="text" class="form-control" name="location" id="location" placeholder="交叉路口">
+                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間">
+                        </div>
+                        <div class="col-sm-4 btn-group">
+                            <button class="btn btn-danger" data-target="offset" data-type="minus"><span class="glyphicon glyphicon-minus"></span></button>
+                            <button class="btn btn-success" data-target="offset" data-type="plus"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                       </div>
                       <div class="form-group">
@@ -52,16 +62,6 @@
                             <button class="btn btn-danger" data-target="red_phase" data-type="minus"><span class="glyphicon glyphicon-minus"></span></button>
                             <button class="btn btn-primary" data-target="red_phase" data-type="count-up">計時開始</button>
                             <button class="btn btn-success" data-target="red_phase" data-type="plus"><span class="glyphicon glyphicon-plus"></span></button>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2" for="delay">延遲</label>
-                        <div class="col-sm-4">
-                            <input type="number" class="form-control" name="offset" id="offset" placeholder="延遲時間">
-                        </div>
-                        <div class="col-sm-4 btn-group">
-                            <button class="btn btn-danger" data-target="offset" data-type="minus"><span class="glyphicon glyphicon-minus"></span></button>
-                            <button class="btn btn-success" data-target="offset" data-type="plus"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                       </div>
                       <div class="form-group">
