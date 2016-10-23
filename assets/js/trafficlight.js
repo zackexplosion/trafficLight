@@ -73,9 +73,13 @@ var setTrafficLight = function () {
     var trafficLight = new Object();
     trafficLight.ready = false;
     $('#red_phase').val(red_phase);
+    replaceUrlParam('red', red_phase);
     $('#green_phase').val(green_phase);
+    replaceUrlParam('green', green_phase);
     $('#offset').val(offset);
+    replaceUrlParam('offset', offset);
     $('#location').val(_location);
+    replaceUrlParam('location', _location);
     trafficLight.timer = [red_phase, green_phase];
     trafficLight.offset = offset;
     trafficLight.period = red_phase + green_phase;
