@@ -115,6 +115,7 @@ var stopCountUp = function () {
     if ("undefined" !== typeof countDownIntval) {
         clearInterval(countDownIntval);
     }
+    fire();
 }
 
 var countUp = function () {
