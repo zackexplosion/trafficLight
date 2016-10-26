@@ -107,9 +107,7 @@ var enableCountUp = function (target) {
         clearInterval(countDownIntval);
     }
     countDownIntval = setInterval(function () {
-        phase++;
-        $('#' + target).val(phase);
-        replaceUrlParam(target, phase);
+        increasePhase(target);
     }, 1000);
 }
 
@@ -122,6 +120,16 @@ var stopCountUp = function () {
 var countUp = function () {
     var _this = $(this), target = _this.data('target'), phase = $('#' + target).val();
 }
+
+var increasePhase = function (target) {
+    var originValue = parseInt($('#' + target).val()) || 0;
+    $('#' + target).val(originValue + 1);
+}
+
+var descreasePhase = function (target) {
+    var originValue = parseInt($('#' + target).val()) || 0;
+    $('#' + target).val(originValue - 1);
+}
 $(document).on("ready", function () {
     var trafficLight = setTrafficLight();
     if (trafficLight.ready) {
@@ -130,15 +138,13 @@ $(document).on("ready", function () {
     $('#test').click(fire);
     $('button[data-type="plus"]').on("click", function () {
         var target = $(this).data('target');
-        var originValue = parseInt($('#' + target).val());
-        $('#' + target).val(originValue + 1);
+        increasePhase(target);
         fire();
         return false;
     });
     $('button[data-type="minus"]').on("click", function () {
         var target = $(this).data('target');
-        var originValue = parseInt($('#' + target).val());
-        $('#' + target).val(originValue - 1);
+        descreasePhase(target);
         fire();
         return false;
     });
