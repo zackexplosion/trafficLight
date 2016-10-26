@@ -100,6 +100,28 @@ var fire = function () {
     var display = $('#canvas_seconds').get(0);
     lightInterval = setInterval(function(){countDown(trafficLight, display)}, 1000);
 }
+
+var enableCountUp = function (target) {
+    var phase = parseInt($('#' + target).val()) || 0;
+    if ("undefined" !== typeof countDownIntval) {
+        clearInterval(countDownIntval);
+    }
+    countDownIntval = setInterval(function () {
+        phase++;
+        $('#' + target).val(phase);
+        replaceUrlParam(target, phase);
+    }, 1000);
+}
+
+var stopCountUp = function () {
+    if ("undefined" !== typeof countDownIntval) {
+        clearInterval(countDownIntval);
+    }
+}
+
+var countUp = function () {
+    var _this = $(this), target = _this.data('target'), phase = $('#' + target).val();
+}
 $(document).on("ready", function () {
     var trafficLight = setTrafficLight();
     if (trafficLight.ready) {
@@ -118,6 +140,18 @@ $(document).on("ready", function () {
         var originValue = parseInt($('#' + target).val());
         $('#' + target).val(originValue - 1);
         fire();
+        return false;
+    });
+    $('button[data-type="count-up"]').on("click", function () {
+        var target = $(this).data('target');
+        var state = $(this).data('state');
+        if (state === "counting") {
+            $(this).data('state', "stop");
+            stopCountUp();
+        } else {
+            $(this).data('state', "counting");
+            enableCountUp(target);
+        }
         return false;
     });
 });
