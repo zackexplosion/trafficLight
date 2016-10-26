@@ -66,16 +66,16 @@ var replaceUrlParam = function (paramName, paramValue) {
 var lightInterval = null;
 var period_start = null;
 var setTrafficLight = function () {
-    var red_phase = parseInt($('#red_phase').val()) || parseInt(getParameterByName('red')) || 0;
-    var green_phase = parseInt($('#green_phase').val()) || parseInt(getParameterByName('green')) || 0;
+    var red_phase = parseInt($('#red_phase').val()) || parseInt(getParameterByName('red_phase')) || 0;
+    var green_phase = parseInt($('#green_phase').val()) || parseInt(getParameterByName('green_phase')) || 0;
     var offset = parseInt($('#offset').val()) || parseInt(getParameterByName('offset')) || 0;
     var _location = $('#location').val() || getParameterByName('location');
     var trafficLight = new Object();
     trafficLight.ready = false;
     $('#red_phase').val(red_phase);
-    replaceUrlParam('red', red_phase);
+    replaceUrlParam('red_phase', red_phase);
     $('#green_phase').val(green_phase);
-    replaceUrlParam('green', green_phase);
+    replaceUrlParam('green_phase', green_phase);
     $('#offset').val(offset);
     replaceUrlParam('offset', offset);
     $('#location').val(_location);
